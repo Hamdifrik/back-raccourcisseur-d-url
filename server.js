@@ -7,24 +7,14 @@ import { nanoid } from 'nanoid';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-const BASE_URL = process.env.BASE_URL || 'http://localhost:5000';
+const BASE_URL = process.env.BASE_URL 
 
 // Middleware
 app.use(express.json());
 app.use(cors());
 
 // Connexion à MongoDB
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  tls: true,
-  tlsInsecure: true // Permet d'éviter l'erreur SSL
-}).then(() => {
-  console.log('✅ Connecté à MongoDB');
-}).catch(err => {
-  console.error('❌ Erreur de connexion à MongoDB:', err);
-});
-
+mongoose.connect(process.env.MONGO_URI);
 
 
 // Modèle MongoDB
